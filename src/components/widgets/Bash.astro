@@ -1,0 +1,21 @@
+---
+export interface Props {
+    id: string,
+    input: string,
+    output: string,
+}
+const {
+    id,
+    input,
+    output,
+} = Astro.props
+
+const containerId = `#${id}`
+---
+<link rel="stylesheet" href="styles/termynal.css" />
+<div id={id} data-ty-startDelay="600" style="min-height: 250px">
+    <span data-ty="input">{ input }</span>
+    <span data-ty="progress"></span>
+    <span data-ty>{ output }</span>
+</div>
+<script src="js/termynal.js" data-termynal-container={containerId}></script>

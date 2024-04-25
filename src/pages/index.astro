@@ -1,0 +1,107 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Note from '~/components/widgets/Note.astro';
+import Features from '~/components/widgets/Features.astro';
+import Stats from '~/components/widgets/Stats.astro';
+
+const metadata = {
+  title: 'MessageFlow — first Web framework for building event-driven applications with Python 3.10+',
+  ignoreTitleTemplate: true,
+};
+---
+<Layout metadata={metadata}>
+  <Hero
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get started',
+        href: 'https://github.com/voro6yov/message-flow',
+        target: '_blank',
+        icon: 'tabler:brand-github',
+      },
+      { text: 'Documentation', href: '#features' },
+    ]}
+    image={{ src: '~/assets/images/hero.png', alt: 'MessageFlow Hero Image' }}
+  >
+    <Fragment slot="title">
+      <span class="text-accent dark:text-white highlight">Message Flow</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        easiest way to build <span class="font-semibold">event-driven</span> applications.</span
+      > <br />
+      <span class="block mb-1 sm:hidden font-bold text-blue-600">MessageFlow: Production-ready.</span>
+       It's like FastAPI in the celery-driven world.
+    </Fragment>
+  </Hero>
+
+  <!-- Note Widget ******************* -->
+
+  <Note 
+    header="Philosophy:"
+    details="Simplicity, Best Practices and High Performance"
+  />
+
+  <!-- Features Widget *************** -->
+
+  <Features
+    id="features"
+    tagline="Features"
+    title="What is Message Flow?"
+    subtitle=""
+    items={[
+      {
+        title: 'AsyncAPI documentation',
+        description:
+          'Automatically generate AsyncAPI swagger-compatible documentation for both consumers and producers.',
+        icon: 'tabler:brand-tailwind',
+      },
+      {
+        title: 'Ready-to-use integrations',
+        description:
+          'Supports a wide range of message brokers, including RabbitMQ, GCP Pub/Sub, AWS SQS, and more.',
+        icon: 'tabler:components',
+      },
+      {
+        title: 'Simple and intuitive API',
+        description:
+          'Easy to define and use, with a simple and intuitive API that allows you to focus on your business logic.',
+        icon: 'tabler:list-check',
+      },
+      {
+        title: 'Easy to test',
+        description:
+          'Simple and easy to test, with a built-in test client and support for Pytest and other testing frameworks.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Production-ready',
+        description:
+          'Built-in support for monitoring, logging, and error handling, with a focus on performance and scalability.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Python 3.10+',
+        description:
+          'Built for Python 3.10+, with support for the latest features and best practices.',
+        icon: 'tabler:code',
+      },
+    ]}
+  />
+
+  <!-- Stats Widget ****************** -->
+
+  <!--TODO: Build a stats widget to show the number of downloads, stars, forks, and users.-->
+  <!--<Stats-->
+  <!--  stats={[-->
+  <!--    { title: 'Downloads', amount: '132K' },-->
+  <!--    { title: 'Stars', amount: '24.8K' },-->
+  <!--    { title: 'Forks', amount: '10.3K' },-->
+  <!--    { title: 'Users', amount: '48.4K' },-->
+  <!--  ]}-->
+  <!--/>-->
+
+</Layout>
