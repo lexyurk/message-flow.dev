@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "start": "astro preview --site https://message-flow.dev --port 8080",
+    "start": "astro preview --site https://message-flow.dev --port 8080 --host",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
