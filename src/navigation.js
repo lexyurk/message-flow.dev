@@ -31,6 +31,6 @@ export const footerData = {
     { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/voro6yov/message-flow' },
   ],
   footNote: `
-    Made with love from the world. · All rights reserved.
+    Created by engineers for engineers. · All rights reserved.
   `,
 };
