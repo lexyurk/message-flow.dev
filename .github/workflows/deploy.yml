@@ -1,0 +1,45 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18.19.1'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build the project
+      run: npm run build
+
+    - name: Sync files via rsync
+      uses: burnett01/rsync-deployments@5.2.1
+      with:
+        switches: -avzc --delete
+        path: dist/
+        remote_path: /root/sites/message-flow.dev/public_html/
+        remote_host: ${{ secrets.DROPLET_IP }}
+        remote_user: ${{ secrets.SSH_USERNAME }}
+        remote_key: ${{ secrets.DO_SSH_KEY }}
+
+    - name: Restart Docker Containers
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.DROPLET_IP }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.DO_SSH_KEY }}
+        script: |
+          cd /root/sites
+          docker compose restart
